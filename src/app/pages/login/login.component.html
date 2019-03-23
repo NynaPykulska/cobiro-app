@@ -1,0 +1,24 @@
+<div class="form-container">
+  <p *ngIf="newUser">Register</p>
+  <p *ngIf="!newUser">Log in</p>
+
+  <mat-form-field>
+    <input matInput placeholder="Username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </mat-form-field>
+
+  <div *ngIf="newUser">
+    <button mat-stroked-button (click)="newUser = false">I have an account</button>
+    <button mat-stroked-button >Register</button>
+
+  </div>
+  <div *ngIf="!newUser">
+    <button mat-stroked-button (click)="newUser = true">I don't have an account</button>
+    <button mat-stroked-button >Log in</button>
+  </div>
+
+</div>

@@ -131,5 +131,10 @@
       }
     }
   },
-  "defaultProject": "cobiro-app"
+  "defaultProject": "cobiro-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "sass"
+    }
+  }
 }
