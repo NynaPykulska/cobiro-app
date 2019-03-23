@@ -1,24 +1,38 @@
 <div class="form-container">
-  <p *ngIf="newUser">Register</p>
-  <p *ngIf="!newUser">Log in</p>
+  <p *ngIf="newUser" class="mat-title">Register</p>
+  <p *ngIf="!newUser" class="mat-title">Log in</p>
 
-  <mat-form-field>
-    <input matInput placeholder="Username">
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </mat-form-field>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="email" [(ngModel)]="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="password" [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password">
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+  </div>
 
   <div *ngIf="newUser">
-    <button mat-stroked-button (click)="newUser = false">I have an account</button>
-    <button mat-stroked-button >Register</button>
+    <mat-form-field>
+      <input matInput placeholder="name" [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="surname" [(ngModel)]="surname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="country code" [(ngModel)]="countryCode">
+    </mat-form-field>
+  </div>
+  <div *ngIf="newUser" class="buttons-container">
+    <button mat-stroked-button (click)="newUser = false" class="switch-button">I have an account</button>
+    <button mat-stroked-button (click)="confirmUser()">Register</button>
 
   </div>
-  <div *ngIf="!newUser">
-    <button mat-stroked-button (click)="newUser = true">I don't have an account</button>
-    <button mat-stroked-button >Log in</button>
+  <div *ngIf="!newUser" class="buttons-container">
+    <button mat-stroked-button (click)="newUser = true" class="switch-button">I don't have an account</button>
+    <button mat-stroked-button (click)="confirmUser()">Log in</button>
   </div>
 
 </div>

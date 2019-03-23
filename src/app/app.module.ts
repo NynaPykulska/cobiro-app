@@ -11,6 +11,8 @@ import { HeaderComponent } from './pages/sites/header/header.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
   {
@@ -41,7 +43,9 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
