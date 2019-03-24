@@ -18,6 +18,10 @@ export class UserService {
     return !!this.userData;
   }
 
+  getCustomerData() {
+    return this.userData.customer;
+  }
+
   registerUser(user: User) {
     this.httpClient.post<User>('https://api.test-cobiro.com/api/v1/register', user).subscribe(
       _registeredUser => this.logInUser(user)
