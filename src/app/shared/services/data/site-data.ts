@@ -1,11 +1,11 @@
 export const INITIAL_SITES = [
   {
-    website: 'http://my-blog.com',
+    website: 'https://www.reddit.com/',
     language_code: 'da',
     integrations: [
       {
         type: 'prestashop',
-        url: 'http://my-blog.com',
+        url: 'https://www.reddit.com/',
         key: '5e6832-a2a8-4389-1234',
         identifier: '12341234'
       }
@@ -22,12 +22,12 @@ export const INITIAL_SITES = [
     ],
     new_products_chosen: true
   }, {
-    website: 'http://my-photoblog.com',
+    website: 'https://github.com/NynaPykulska',
     language_code: 'da',
     integrations: [
       {
         type: 'prestashop',
-        url: 'http://my-photoblog.com',
+        url: 'https://github.com/NynaPykulska',
         key: '5e6832-a2a8-4389-1235',
         identifier: '12341234'
       }
@@ -44,12 +44,12 @@ export const INITIAL_SITES = [
     ],
     new_products_chosen: true
   }, {
-    website: 'http://my-cooking-blog.com',
+    website: 'https://angular.io/',
     language_code: 'da',
     integrations: [
       {
         type: 'prestashop',
-        url: 'http://my-cooking.com',
+        url: 'https://angular.io/',
         key: '5e6832-a2a8-4389-1236',
         identifier: '12341234'
       }

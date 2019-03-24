@@ -13,6 +13,7 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/mate
 import {MatIconModule} from '@angular/material/icon';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {SitesService} from './shared/services/sites.service';
 
 const appRoutes: Routes = [
   {
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, SitesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
