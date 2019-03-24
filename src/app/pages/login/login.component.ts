@@ -25,15 +25,11 @@ export class LoginComponent implements OnInit {
 
   confirmUser() {
     const user: User = {
-      company: '',
       country_code: this.countryCode,
       email: this.email,
       first_name: this.name,
       last_name: this.surname,
-      mcc_id: '',
       password: this.password,
-      source: '',
-      website: ''
     };
     console.log('user', user);
     this.newUser ? this.userService.registerUser(user) : this.userService.logInUser(user);

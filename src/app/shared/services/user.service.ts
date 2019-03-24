@@ -3,13 +3,14 @@ import {User} from '../model/user.model';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {AuthData} from '../model/auth.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private userData: any;
+  private userData: AuthData;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -19,16 +20,14 @@ export class UserService {
 
   registerUser(user: User) {
     this.httpClient.post<User>('https://api.test-cobiro.com/api/v1/register', user).subscribe(
-      registeredUser => this.logInUser(registeredUser)
+      _registeredUser => this.logInUser(user)
     );
   }
 
   logInUser(user: User) {
-    console.log('aaaaaaa');
-    this.httpClient.post<User>('https://api.test-cobiro.com/api/v1/login', user).subscribe(
-      loggedUser => {
-        console.log('response', loggedUser);
-        this.userData = loggedUser;
+    this.httpClient.post<AuthData>('https://api.test-cobiro.com/api/v1/login', user).subscribe(
+      (authData: AuthData) => {
+        this.userData = authData;
         this.router.navigate(['/sites']);
       }
     );
