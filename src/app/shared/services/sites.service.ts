@@ -11,12 +11,12 @@ export class SitesService {
 
   getSitesForCurrentUser() {
     const options = this.userService.getHtpOptionsWithAuthorizationHeader();
-    return this.httpClient.get('https://api.test-cobiro.com/api/v1/sites', options);
+    return this.httpClient.get('https://api.test-cobiro.com/api/v1/site', options);
   }
 
   editSite(id: number, siteData) {
     const options = this.userService.getHtpOptionsWithAuthorizationHeader();
-    return this.httpClient.patch('https://api.test-cobiro.com/api/v1/sites/' + id, siteData, options);
+    return this.httpClient.patch('https://api.test-cobiro.com/api/v1/site/' + id, siteData, options);
   }
 
 }

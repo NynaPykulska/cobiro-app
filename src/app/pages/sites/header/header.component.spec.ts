@@ -28,6 +28,7 @@ describe('HeaderComponent', () => {
   });
 
   it('should create', () => {
+    when(userServiceMock.getCustomerData()).thenReturn({first_name: 'Mary', last_name: 'Poppins'});
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

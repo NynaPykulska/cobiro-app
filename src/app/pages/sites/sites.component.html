@@ -1,4 +1,48 @@
 <app-header></app-header>
-<p>
-  sites works!
-</p>
+<div class="sites-container">
+  <p class="mat-subheading-2">Your current sites: </p>
+
+  <ng-container *ngFor="let site of sitesData">
+    <mat-card class="site-card">
+      <mat-card-header>
+        <mat-card-title>{{site.name}}</mat-card-title>
+        <mat-card-subtitle>{{site.website}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <span class="mat-body-2">Max CPC: </span>
+          <span class="mat-body-1" *ngIf="!site.editMode">{{site.max_cpc}}</span>
+          <span class="mat-body-1" *ngIf="site.editMode"><input type="text" [(ngModel)]="site.patch.max_cpc"></span>
+        </div>
+        <div>
+          <span class="mat-body-2">Daily Budget: </span>
+          <span class="mat-body-1" *ngIf="!site.editMode">{{site.daily_budget}}</span>
+          <span class="mat-body-1" *ngIf="site.editMode"><input type="text" [(ngModel)]="site.patch.daily_budget"></span>
+
+        </div>
+        <div>
+          <span class="mat-body-2">Currency: </span>
+          <span class="mat-body-1" *ngIf="!site.editMode">{{site.currency}}</span>
+          <span class="mat-body-1" *ngIf="site.editMode"><input type="text" [(ngModel)]="site.patch.currency"></span>
+
+        </div>
+        <div>
+          <span class="mat-body-2">Language code: </span>
+          <span class="mat-body-1" *ngIf="!site.editMode">{{site.language_code}}</span>
+          <span class="mat-body-1" *ngIf="site.editMode"><input type="text" [(ngModel)]="site.patch.language_code"></span>
+
+        </div>
+        <div>
+          <span class="mat-body-2">Brand: </span>
+          <span class="mat-body-1" *ngIf="!site.editMode">{{site.brand}}</span>
+          <span class="mat-body-1" *ngIf="site.editMode"><input type="text" [(ngModel)]="site.patch.brand"></span>
+
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button *ngIf="!site.editMode" (click)="site.editMode = true">Edit</button>
+        <button mat-stroked-button *ngIf="site.editMode" (click)="save(site.id, site.patch)">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>

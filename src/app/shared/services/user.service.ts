@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {INITIAL_SITES} from './data/site-data';
 import {Router} from '@angular/router';
 import {AuthData} from '../model/auth.model';
+import {forkJoin, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,19 +33,21 @@ export class UserService {
     this.httpClient.post<AuthData>('https://api.test-cobiro.com/api/v1/login', user).subscribe(
       (authData: AuthData) => {
         this.userData = authData;
-        this.createInitialSitesForUser();
-        this.router.navigate(['/sites']);
+        forkJoin(this.createInitialSitesForUser()).subscribe(results => {
+          console.log('created sites: ', results);
+          this.router.navigate(['/sites']);
+        });
       }
     );
   }
 
   private createInitialSitesForUser() {
     const options = this.getHtpOptionsWithAuthorizationHeader();
-    INITIAL_SITES.forEach(site =>
-      this.httpClient.post('https://api.test-cobiro.com/api/v1/site', site, options).subscribe(
-        createdSite => console.log('New site ', createdSite)
-      )
+    const observables = [];
+    INITIAL_SITES.forEach(site => observables.push(
+      this.httpClient.post('https://api.test-cobiro.com/api/v1/site', site, options))
     );
+    return observables;
   }
 
   getHtpOptionsWithAuthorizationHeader() {
